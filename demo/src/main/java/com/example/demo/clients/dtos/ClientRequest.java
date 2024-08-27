@@ -4,7 +4,7 @@ import com.example.demo.addresses.dtos.AddressRequest;
 import com.example.demo.addresses.dtos.AddressResponse;
 
 public record ClientRequest(
-        int id,
+        Long id,
         String firstName,
         String lastName,
         AddressRequest address
