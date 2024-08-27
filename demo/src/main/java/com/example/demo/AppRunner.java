@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.addresses.entities.AddressEntity;
+import com.example.demo.addresses.repositories.AddressRepository;
 import com.example.demo.vehicles.entities.BicycleEntity;
 import com.example.demo.vehicles.entities.CarEntity;
 import com.example.demo.vehicles.entities.MotorcycleEntity;
@@ -18,6 +20,7 @@ public class AppRunner implements CommandLineRunner {
     private final CarsRepository carsRepository;
     private final BicycleRepository bicycleRepository;
     private final MotorcycleRepository motorcycleRepository;
+    private final AddressRepository addressRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -29,5 +32,8 @@ public class AppRunner implements CommandLineRunner {
 
         MotorcycleEntity motorcycle = new MotorcycleEntity(80, "blue", 300.5, false, 0);
         this.motorcycleRepository.save(motorcycle);
+
+        AddressEntity address = AddressEntity.builder().city("Warsaw").postCode(12345).streetName("Złota").streetNumber(39).build();
+        this.addressRepository.save(address);
     }
 }
