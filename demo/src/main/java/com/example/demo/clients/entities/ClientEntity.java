@@ -16,7 +16,7 @@ import java.util.UUID;
 @Entity(name = "clients")
 public class ClientEntity {
     @Id
-    private int id;
+    private Long id;
     private String firstName;
     private String lastName;
     @OneToOne(fetch = FetchType.LAZY)
@@ -25,7 +25,7 @@ public class ClientEntity {
     @OneToMany(mappedBy = "client")
     private List<RentEntity> rents;
 
-    public ClientEntity(int id, String firstName, String lastName, AddressEntity address) {
+    public ClientEntity(Long id, String firstName, String lastName, AddressEntity address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
