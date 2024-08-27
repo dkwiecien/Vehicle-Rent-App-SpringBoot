@@ -1,6 +1,8 @@
 package com.example.demo.addresses.dtos;
 
-public record AddressDto(
+import java.util.UUID;
+
+public record AddressResponse(
         String city,
         int postCode,
         String streetName,
