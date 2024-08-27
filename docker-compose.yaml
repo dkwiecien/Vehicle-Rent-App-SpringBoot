@@ -1,0 +1,13 @@
+services:
+  rent-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: rent
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - rent-db-data:/var/lib/postgresql/rent
+    ports:
+      - "5432:5432"
+volumes:
+  rent-db-data:
