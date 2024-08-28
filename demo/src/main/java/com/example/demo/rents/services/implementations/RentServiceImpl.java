@@ -4,6 +4,7 @@ import com.example.demo.addresses.dtos.AddressResponse;
 import com.example.demo.clients.dtos.ClientResponse;
 import com.example.demo.clients.entities.ClientEntity;
 import com.example.demo.clients.repositories.ClientRepository;
+import com.example.demo.exceptions.NotFoundException;
 import com.example.demo.rents.dtos.RentRequest;
 import com.example.demo.rents.dtos.RentResponse;
 import com.example.demo.rents.entities.RentEntity;
@@ -55,9 +56,11 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public RentEntity save(RentRequest request) throws BadRequestException {
-        ClientEntity client = this.clientRepository.findById(request.clientId()).orElseThrow();
+        ClientEntity client = this.clientRepository.findById(request.clientId())
+                .orElseThrow(() -> new NotFoundException("Client with Id: " + request.clientId() + " does not exist"));
 
-        VehicleEntity vehicle = this.vehicleRepository.findById(request.vehicleId()).orElseThrow();
+        VehicleEntity vehicle = this.vehicleRepository.findById(request.vehicleId())
+                .orElseThrow(() -> new NotFoundException("Vehicle with Id: " + request.vehicleId() + " does not exist"));
 
         List<RentEntity> currentRents = this.rentRepository.findByClientIdAndIsArchiveFalse(client.getId());
         if (currentRents.size() >= 2) throw new BadRequestException("Rent limit has been already reached");
