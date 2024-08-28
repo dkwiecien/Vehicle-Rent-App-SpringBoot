@@ -1,6 +1,9 @@
 package com.example.demo.vehicles.dtos;
 
-public record MotorcycleDto(
+import java.util.UUID;
+
+public record MotorcycleResponse(
+        UUID id,
         double weight,
         String color,
         double price,

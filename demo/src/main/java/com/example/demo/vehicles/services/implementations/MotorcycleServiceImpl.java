@@ -1,6 +1,7 @@
 package com.example.demo.vehicles.services.implementations;
 
-import com.example.demo.vehicles.dtos.MotorcycleDto;
+import com.example.demo.vehicles.dtos.MotorcycleRequest;
+import com.example.demo.vehicles.dtos.MotorcycleResponse;
 import com.example.demo.vehicles.entities.MotorcycleEntity;
 import com.example.demo.vehicles.repositories.MotorcycleRepository;
 import com.example.demo.vehicles.services.MotorcycleService;
@@ -16,9 +17,10 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     private final MotorcycleRepository motorcycleRepository;
 
     @Override
-    public List<MotorcycleDto> getMotorcycles() {
+    public List<MotorcycleResponse> getMotorcycles() {
         return this.motorcycleRepository.findAll().stream().map(
-                motorcycleEntity -> new MotorcycleDto(
+                motorcycleEntity -> new MotorcycleResponse(
+                        motorcycleEntity.getId(),
                         motorcycleEntity.getWeight(),
                         motorcycleEntity.getColor(),
                         motorcycleEntity.getPrice(),
@@ -28,7 +30,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     }
 
     @Override
-    public MotorcycleEntity save(MotorcycleDto request) {
+    public MotorcycleEntity addMotorcycle(MotorcycleRequest request) {
         MotorcycleEntity newMotorcycle = MotorcycleEntity.builder()
                 .price(request.price())
                 .weight(request.weight())

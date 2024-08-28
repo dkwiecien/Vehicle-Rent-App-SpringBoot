@@ -1,10 +1,7 @@
 package com.example.demo.vehicles.controllers;
 
-import com.example.demo.vehicles.dtos.BicycleRequest;
-import com.example.demo.vehicles.dtos.BicycleResponse;
 import com.example.demo.vehicles.dtos.CarRequest;
 import com.example.demo.vehicles.dtos.CarResponse;
-import com.example.demo.vehicles.entities.BicycleEntity;
 import com.example.demo.vehicles.entities.CarEntity;
 import com.example.demo.vehicles.services.CarService;
 import org.junit.jupiter.api.Test;
