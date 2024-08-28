@@ -2,6 +2,7 @@ package com.example.demo.clients.services.implementations;
 
 import com.example.demo.addresses.dtos.AddressResponse;
 import com.example.demo.addresses.entities.AddressEntity;
+import com.example.demo.addresses.repositories.AddressRepository;
 import com.example.demo.clients.dtos.ClientRequest;
 import com.example.demo.clients.dtos.ClientResponse;
 import com.example.demo.clients.entities.ClientEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
+    private final AddressRepository addressRepository;
 
     @Override
     public List<ClientResponse> getClients() {
@@ -36,18 +38,14 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientEntity save(ClientRequest request) {
-        ClientEntity newClient = new ClientEntity(
-                request.id(),
-                request.firstName(),
-                request.lastName(),
-                new AddressEntity(
-                        request.address().id(),
-                        request.address().city(),
-                        request.address().postCode(),
-                        request.address().streetName(),
-                        request.address().streetNumber()
-                )
-        );
+        AddressEntity address = this.addressRepository.findById(request.addressId()).orElseThrow();
+
+        ClientEntity newClient = ClientEntity.builder()
+                .id(request.id())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .address(address)
+                .build();
 
         return this.clientRepository.save(newClient);
     }

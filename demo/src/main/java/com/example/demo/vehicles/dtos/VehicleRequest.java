@@ -6,7 +6,6 @@ public record VehicleRequest(
         UUID id,
         double weight,
         String color,
-        double price,
-        boolean isRented
+        double price
 ) {
 }

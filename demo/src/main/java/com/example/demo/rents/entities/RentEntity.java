@@ -8,7 +8,6 @@ import lombok.*;
 import java.util.UUID;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,11 +24,4 @@ public class RentEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id")
     private VehicleEntity vehicle;
-
-    public RentEntity(double price, boolean isArchive, ClientEntity client, VehicleEntity vehicle) {
-        this.price = price;
-        this.isArchive = isArchive;
-        this.client = client;
-        this.vehicle = vehicle;
-    }
 }

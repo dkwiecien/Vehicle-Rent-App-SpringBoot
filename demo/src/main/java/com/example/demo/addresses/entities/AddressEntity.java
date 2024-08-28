@@ -9,7 +9,6 @@ import lombok.*;
 import java.util.UUID;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,11 +21,4 @@ public class AddressEntity {
     private int postCode;
     private String streetName;
     private int streetNumber;
-
-    public AddressEntity(String city, int postCode, String streetName, int streetNumber) {
-        this.city = city;
-        this.postCode = postCode;
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-    }
 }
