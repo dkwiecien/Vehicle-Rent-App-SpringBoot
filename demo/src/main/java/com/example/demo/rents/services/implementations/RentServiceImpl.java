@@ -37,6 +37,7 @@ public class RentServiceImpl implements RentService {
                                 rentEntity.getClient().getFirstName(),
                                 rentEntity.getClient().getLastName(),
                                 new AddressResponse(
+                                        rentEntity.getClient().getAddress().getId(),
                                         rentEntity.getClient().getAddress().getCity(),
                                         rentEntity.getClient().getAddress().getPostCode(),
                                         rentEntity.getClient().getAddress().getStreetName(),

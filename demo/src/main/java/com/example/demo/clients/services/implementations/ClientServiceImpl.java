@@ -27,6 +27,7 @@ public class ClientServiceImpl implements ClientService {
                         clientEntity.getFirstName(),
                         clientEntity.getLastName(),
                         new AddressResponse(
+                                clientEntity.getAddress().getId(),
                                 clientEntity.getAddress().getCity(),
                                 clientEntity.getAddress().getPostCode(),
                                 clientEntity.getAddress().getStreetName(),
