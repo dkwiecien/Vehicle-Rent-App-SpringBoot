@@ -24,7 +24,7 @@ public class RentController {
     }
 
     @PostMapping("/save")
-    public RentEntity save(@RequestBody RentRequest request) throws BadRequestException {
-        return this.rentService.save(request);
+    public RentEntity addRent(@RequestBody RentRequest request) throws BadRequestException {
+        return this.rentService.addRent(request);
     }
 }

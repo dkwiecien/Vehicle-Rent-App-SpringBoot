@@ -46,6 +46,7 @@ public class RentServiceImpl implements RentService {
                                 )
                         ),
                         new VehicleResponse(
+                                rentEntity.getVehicle().getId(),
                                 rentEntity.getVehicle().getWeight(),
                                 rentEntity.getVehicle().getColor(),
                                 rentEntity.getVehicle().getPrice()
@@ -55,7 +56,7 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public RentEntity save(RentRequest request) throws BadRequestException {
+    public RentEntity addRent(RentRequest request) throws BadRequestException {
         ClientEntity client = this.clientRepository.findById(request.clientId())
                 .orElseThrow(() -> new NotFoundException("Client with Id: " + request.clientId() + " does not exist"));
 
