@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ClientService {
     List<ClientResponse> getClients();
-    ClientEntity save(ClientRequest request);
+    ClientEntity addClient(ClientRequest request);
 }

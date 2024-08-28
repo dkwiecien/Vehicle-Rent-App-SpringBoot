@@ -39,7 +39,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientEntity save(ClientRequest request) throws NotFoundException {
+    public ClientEntity addClient(ClientRequest request) throws NotFoundException {
         AddressEntity address = this.addressRepository.findById(request.addressId())
                 .orElseThrow(() -> new NotFoundException("Address with Id: " + request.addressId() + " does not exist"));
 
