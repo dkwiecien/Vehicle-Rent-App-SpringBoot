@@ -1,6 +1,7 @@
 package com.example.demo.vehicles.services.implementations;
 
-import com.example.demo.vehicles.dtos.CarDto;
+import com.example.demo.vehicles.dtos.CarRequest;
+import com.example.demo.vehicles.dtos.CarResponse;
 import com.example.demo.vehicles.entities.CarEntity;
 import com.example.demo.vehicles.repositories.CarsRepository;
 import com.example.demo.vehicles.services.CarService;
@@ -15,17 +16,19 @@ public class CarServiceImpl implements CarService {
     private final CarsRepository carsRepository;
 
     @Override
-    public List<CarDto> getAll() {
+    public List<CarResponse> getCars() {
         return this.carsRepository.findAll()
                 .stream().
-                map(car -> new CarDto(car.getWeight(),
+                map(car -> new CarResponse(
+                        car.getId(),
+                        car.getWeight(),
                         car.getColor(),
                         car.getPrice(),
                         car.getNumberOfSeats())).toList();
     }
 
     @Override
-    public CarEntity save(CarDto request) {
+    public CarEntity addCar(CarRequest request) {
         CarEntity car = CarEntity.builder()
                 .price(request.price())
                 .color(request.color())

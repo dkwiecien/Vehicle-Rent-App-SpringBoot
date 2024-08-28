@@ -1,6 +1,7 @@
 package com.example.demo.vehicles.controllers;
 
-import com.example.demo.vehicles.dtos.CarDto;
+import com.example.demo.vehicles.dtos.CarRequest;
+import com.example.demo.vehicles.dtos.CarResponse;
 import com.example.demo.vehicles.entities.CarEntity;
 import com.example.demo.vehicles.services.CarService;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +17,12 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<CarDto>> getAll() {
-        return ResponseEntity.ok(this.carService.getAll());
+    public ResponseEntity<List<CarResponse>> getCars() {
+        return ResponseEntity.ok(this.carService.getCars());
     }
 
     @PostMapping("/save")
-    public CarEntity save(@RequestBody CarDto request) {
-        return this.carService.save(request);
+    public CarEntity addCar(@RequestBody CarRequest request) {
+        return this.carService.addCar(request);
     }
 }
