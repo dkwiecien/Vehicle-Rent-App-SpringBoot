@@ -1,6 +1,7 @@
 package com.example.demo.vehicles.controllers;
 
-import com.example.demo.vehicles.dtos.BicycleDto;
+import com.example.demo.vehicles.dtos.BicycleRequest;
+import com.example.demo.vehicles.dtos.BicycleResponse;
 import com.example.demo.vehicles.entities.BicycleEntity;
 import com.example.demo.vehicles.services.BicycleService;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +18,12 @@ public class BicycleController {
     private final BicycleService bicycleService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<BicycleDto>> getBicycles() {
+    public ResponseEntity<List<BicycleResponse>> getBicycles() {
         return ResponseEntity.ok(this.bicycleService.getBicycles());
     }
 
     @PostMapping("/save")
-    public BicycleEntity save(@RequestBody BicycleDto request) {
-        return this.bicycleService.save(request);
+    public BicycleEntity addBicycle(@RequestBody BicycleRequest request) {
+        return this.bicycleService.addBicycle(request);
     }
 }
