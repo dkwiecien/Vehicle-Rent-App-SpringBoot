@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,11 +23,4 @@ public class ClientEntity {
     private AddressEntity address;
     @OneToMany(mappedBy = "client")
     private List<RentEntity> rents;
-
-    public ClientEntity(Long id, String firstName, String lastName, AddressEntity address) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-    }
 }

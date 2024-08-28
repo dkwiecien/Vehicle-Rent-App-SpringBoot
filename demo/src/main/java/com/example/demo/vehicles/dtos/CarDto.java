@@ -4,7 +4,6 @@ public record CarDto(
         double weight,
         String color,
         double price,
-        boolean isRented,
         int numberOfSeats
 ) {
 }

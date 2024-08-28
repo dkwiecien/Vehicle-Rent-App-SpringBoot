@@ -10,7 +10,7 @@ public record RentRequest(
         UUID id,
         double price,
         boolean isArchive,
-        ClientRequest client,
-        VehicleRequest vehicle
+        Long clientId,
+        UUID vehicleId
 ) {
 }

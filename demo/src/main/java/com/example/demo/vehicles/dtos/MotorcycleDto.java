@@ -4,7 +4,6 @@ public record MotorcycleDto(
         double weight,
         String color,
         double price,
-        boolean isRented,
         int engineDisplacement
 ) {
 }

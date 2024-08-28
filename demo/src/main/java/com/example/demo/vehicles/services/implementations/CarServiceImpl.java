@@ -21,19 +21,17 @@ public class CarServiceImpl implements CarService {
                 map(car -> new CarDto(car.getWeight(),
                         car.getColor(),
                         car.getPrice(),
-                        car.isRented(),
                         car.getNumberOfSeats())).toList();
     }
 
     @Override
     public CarEntity save(CarDto request) {
-        CarEntity car = new CarEntity(
-                request.weight(),
-                request.price(),
-                request.color(),
-                request.isRented(),
-                request.numberOfSeats()
-        );
+        CarEntity car = CarEntity.builder()
+                .price(request.price())
+                .color(request.color())
+                .weight(request.weight())
+                .build();
+
         return this.carsRepository.save(car);
     }
 }

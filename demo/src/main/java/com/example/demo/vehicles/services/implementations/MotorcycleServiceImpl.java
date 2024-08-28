@@ -22,7 +22,6 @@ public class MotorcycleServiceImpl implements MotorcycleService {
                         motorcycleEntity.getWeight(),
                         motorcycleEntity.getColor(),
                         motorcycleEntity.getPrice(),
-                        motorcycleEntity.isRented(),
                         motorcycleEntity.getEngineDisplacement()
                 )
         ).toList();
@@ -30,13 +29,13 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     @Override
     public MotorcycleEntity save(MotorcycleDto request) {
-        MotorcycleEntity newMotorcycle = new MotorcycleEntity(
-                request.weight(),
-                request.color(),
-                request.price(),
-                request.isRented(),
-                request.engineDisplacement()
-        );
+        MotorcycleEntity newMotorcycle = MotorcycleEntity.builder()
+                .price(request.price())
+                .weight(request.weight())
+                .color(request.color())
+                .engineDisplacement(request.engineDisplacement())
+                .build();
+
         return this.motorcycleRepository.save(newMotorcycle);
     }
 }

@@ -20,20 +20,18 @@ public class BicycleServiceImpl implements BicycleService {
                 bicycleEntity.getWeight(),
                 bicycleEntity.getColor(),
                 bicycleEntity.getPrice(),
-                bicycleEntity.isRented(),
                 bicycleEntity.isHelperWheels()
         )).toList();
     }
 
     @Override
     public BicycleEntity save(BicycleDto request) {
-        BicycleEntity newBicycle = new BicycleEntity(
-                request.weight(),
-                request.color(),
-                request.price(),
-                request.isRented(),
-                request.helperWheels()
-        );
+        BicycleEntity newBicycle = BicycleEntity.builder()
+                .price(request.price())
+                .color(request.color())
+                .weight(request.weight())
+                .helperWheels(request.helperWheels())
+                .build();
 
         return this.bicycleRepository.save(newBicycle);
     }

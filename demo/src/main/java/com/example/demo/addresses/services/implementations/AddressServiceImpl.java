@@ -29,12 +29,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressEntity save(AddressResponse request) {
-        AddressEntity newAddress = new AddressEntity(
-                request.city(),
-                request.postCode(),
-                request.streetName(),
-                request.streetNumber()
-        );
+        AddressEntity newAddress = AddressEntity.builder()
+                .city(request.city())
+                .postCode(request.postCode())
+                .streetName(request.streetName())
+                .streetNumber(request.streetNumber())
+                .build();
 
         return this.addressRepository.save(newAddress);
     }
