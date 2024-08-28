@@ -1,9 +1,12 @@
 package com.example.demo.vehicles.dtos;
 
-public record MotorcycleDto(
+import java.util.UUID;
+
+public record BicycleResponse(
+        UUID uuid,
         double weight,
         String color,
         double price,
-        int engineDisplacement
+        boolean helperWheels
 ) {
 }

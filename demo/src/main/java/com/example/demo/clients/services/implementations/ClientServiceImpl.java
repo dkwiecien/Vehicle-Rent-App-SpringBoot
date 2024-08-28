@@ -8,6 +8,7 @@ import com.example.demo.clients.dtos.ClientResponse;
 import com.example.demo.clients.entities.ClientEntity;
 import com.example.demo.clients.repositories.ClientRepository;
 import com.example.demo.clients.services.ClientService;
+import com.example.demo.exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class ClientServiceImpl implements ClientService {
                         clientEntity.getFirstName(),
                         clientEntity.getLastName(),
                         new AddressResponse(
+                                clientEntity.getAddress().getId(),
                                 clientEntity.getAddress().getCity(),
                                 clientEntity.getAddress().getPostCode(),
                                 clientEntity.getAddress().getStreetName(),
@@ -37,8 +39,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientEntity save(ClientRequest request) {
-        AddressEntity address = this.addressRepository.findById(request.addressId()).orElseThrow();
+    public ClientEntity addClient(ClientRequest request) throws NotFoundException {
+        AddressEntity address = this.addressRepository.findById(request.addressId())
+                .orElseThrow(() -> new NotFoundException("Address with Id: " + request.addressId() + " does not exist"));
 
         ClientEntity newClient = ClientEntity.builder()
                 .id(request.id())

@@ -1,4 +1,4 @@
-package com.example.demo.rents.exceptions;
+package com.example.demo.exceptions;
 
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;

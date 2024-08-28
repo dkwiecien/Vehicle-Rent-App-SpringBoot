@@ -1,9 +1,11 @@
 package com.example.demo.vehicles.dtos;
 
-public record CarDto(
+import java.util.UUID;
+
+public record MotorcycleRequest(
         double weight,
         String color,
         double price,
-        int numberOfSeats
+        int engineDisplacement
 ) {
 }

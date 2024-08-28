@@ -1,10 +1,9 @@
 package com.example.demo.vehicles.dtos;
 
-import java.util.UUID;
-
-public record VehicleRequest(
+public record CarRequest(
         double weight,
         String color,
-        double price
+        double price,
+        int numberOfSeats
 ) {
 }

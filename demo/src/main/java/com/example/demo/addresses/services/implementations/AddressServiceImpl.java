@@ -1,5 +1,6 @@
 package com.example.demo.addresses.services.implementations;
 
+import com.example.demo.addresses.dtos.AddressRequest;
 import com.example.demo.addresses.dtos.AddressResponse;
 import com.example.demo.addresses.entities.AddressEntity;
 import com.example.demo.addresses.repositories.AddressRepository;
@@ -19,6 +20,7 @@ public class AddressServiceImpl implements AddressService {
     public List<AddressResponse> getAddresses() {
         return this.addressRepository.findAll().stream().map(
                 addressEntity -> new AddressResponse(
+                        addressEntity.getId(),
                         addressEntity.getCity(),
                         addressEntity.getPostCode(),
                         addressEntity.getStreetName(),
@@ -28,7 +30,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public AddressEntity save(AddressResponse request) {
+    public AddressEntity addAddress(AddressRequest request) {
         AddressEntity newAddress = AddressEntity.builder()
                 .city(request.city())
                 .postCode(request.postCode())

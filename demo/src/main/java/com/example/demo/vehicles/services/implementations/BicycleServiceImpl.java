@@ -1,6 +1,7 @@
 package com.example.demo.vehicles.services.implementations;
 
-import com.example.demo.vehicles.dtos.BicycleDto;
+import com.example.demo.vehicles.dtos.BicycleRequest;
+import com.example.demo.vehicles.dtos.BicycleResponse;
 import com.example.demo.vehicles.entities.BicycleEntity;
 import com.example.demo.vehicles.repositories.BicycleRepository;
 import com.example.demo.vehicles.services.BicycleService;
@@ -15,8 +16,9 @@ public class BicycleServiceImpl implements BicycleService {
 
     private final BicycleRepository bicycleRepository;
     @Override
-    public List<BicycleDto> getBicycles() {
-        return this.bicycleRepository.findAll().stream().map(bicycleEntity -> new BicycleDto(
+    public List<BicycleResponse> getBicycles() {
+        return this.bicycleRepository.findAll().stream().map(bicycleEntity -> new BicycleResponse(
+                bicycleEntity.getId(),
                 bicycleEntity.getWeight(),
                 bicycleEntity.getColor(),
                 bicycleEntity.getPrice(),
@@ -25,7 +27,7 @@ public class BicycleServiceImpl implements BicycleService {
     }
 
     @Override
-    public BicycleEntity save(BicycleDto request) {
+    public BicycleEntity addBicycle(BicycleRequest request) {
         BicycleEntity newBicycle = BicycleEntity.builder()
                 .price(request.price())
                 .color(request.color())

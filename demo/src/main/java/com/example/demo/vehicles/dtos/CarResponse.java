@@ -2,10 +2,11 @@ package com.example.demo.vehicles.dtos;
 
 import java.util.UUID;
 
-public record VehicleResponse(
+public record CarResponse(
         UUID id,
         double weight,
         String color,
-        double price
+        double price,
+        int numberOfSeats
 ) {
 }

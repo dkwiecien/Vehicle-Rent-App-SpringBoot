@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface RentService {
     List<RentResponse> getRents();
-    RentEntity save(RentRequest request) throws BadRequestException;
+    RentEntity addRent(RentRequest request) throws BadRequestException;
 }

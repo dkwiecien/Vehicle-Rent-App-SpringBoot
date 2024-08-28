@@ -23,7 +23,7 @@ public class ClientController {
     }
 
     @PostMapping("/save")
-    public ClientEntity save(@RequestBody ClientRequest request) {
-        return this.clientService.save(request);
+    public ClientEntity addClient(@RequestBody ClientRequest request) {
+        return this.clientService.addClient(request);
     }
 }
