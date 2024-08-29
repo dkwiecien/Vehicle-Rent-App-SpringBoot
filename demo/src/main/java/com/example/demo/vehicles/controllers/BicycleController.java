@@ -17,12 +17,12 @@ public class BicycleController {
 
     private final BicycleService bicycleService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ResponseEntity<List<BicycleResponse>> getBicycles() {
         return ResponseEntity.ok(this.bicycleService.getBicycles());
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public BicycleEntity addBicycle(@RequestBody BicycleRequest request) {
         return this.bicycleService.addBicycle(request);
     }

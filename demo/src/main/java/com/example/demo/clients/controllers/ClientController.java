@@ -17,12 +17,12 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ResponseEntity<List<ClientResponse>> getClients() {
         return ResponseEntity.ok(this.clientService.getClients());
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public ClientEntity addClient(@RequestBody ClientRequest request) {
         return this.clientService.addClient(request);
     }

@@ -18,12 +18,12 @@ public class RentController {
 
     private final RentService rentService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ResponseEntity<List<RentResponse>> getRents() {
         return ResponseEntity.ok(this.rentService.getRents());
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public RentEntity addRent(@RequestBody RentRequest request) throws BadRequestException {
         return this.rentService.addRent(request);
     }

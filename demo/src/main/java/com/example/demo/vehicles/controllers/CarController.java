@@ -16,12 +16,12 @@ import java.util.List;
 public class CarController {
     private final CarService carService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ResponseEntity<List<CarResponse>> getCars() {
         return ResponseEntity.ok(this.carService.getCars());
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public CarEntity addCar(@RequestBody CarRequest request) {
         return this.carService.addCar(request);
     }

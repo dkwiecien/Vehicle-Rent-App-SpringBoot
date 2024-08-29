@@ -17,12 +17,12 @@ public class MotorcycleController {
 
     private final MotorcycleService motorcycleService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ResponseEntity<List<MotorcycleResponse>> getMotorcycles() {
         return ResponseEntity.ok(this.motorcycleService.getMotorcycles());
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public MotorcycleEntity addMotorcycle(@RequestBody MotorcycleRequest request) {
         return this.motorcycleService.addMotorcycle(request);
     }
